@@ -1,73 +1,77 @@
 # Ai-Life-Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend and backend for the AI Life Admin Assistant. Follow the instructions below to get the project running locally on your computer.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Before you begin, ensure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Git](https://git-scm.com/)
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Clone the Repository
 
-## Expanding the ESLint configuration
+First, clone the project to your local machine:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/dhruvmore12oo/Ai-Life-Assistant.git
+cd Ai-Life-Assistant
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The project is split into a frontend and a backend (`server` folder). You need to install dependencies for both.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Frontend Dependencies:**
+```bash
+# From the root directory (Ai-Life-Assistant)
+npm install
 ```
+
+**Backend Dependencies:**
+```bash
+# Navigate to the server directory
+cd server
+npm install
+# Go back to the root directory
+cd ..
+```
+
+### 3. Environment Variables
+
+The backend requires several environment variables to function properly (e.g., Supabase, OpenAI, Resend, etc.).
+
+1. Navigate to the `server` directory:
+   ```bash
+   cd server
+   ```
+2. Copy the example `.env` file to create your own `.env` file:
+   ```bash
+   # On Windows (Command Prompt / PowerShell)
+   copy .env.example .env
+
+   # On Mac / Linux
+   cp .env.example .env
+   ```
+3. Open the newly created `server/.env` file in your code editor and fill in all the required credentials.
+
+### 4. Running the Application Locally
+
+You will need to run the frontend and backend servers simultaneously. Open two separate terminal windows.
+
+**Terminal 1 (Backend Server):**
+```bash
+cd server
+node server.js
+```
+*(The backend server will start, typically on port 5000 or the port specified in your `.env` file).*
+
+**Terminal 2 (Frontend Server):**
+```bash
+# From the root directory
+npm run dev
+```
+*(The React frontend will start, typically on http://localhost:5173).*
+
+Now you can open your browser and navigate to the frontend URL to use the application locally!
