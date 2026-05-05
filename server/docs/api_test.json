@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "Create Manual Task",
+      "method": "POST",
+      "url": "http://localhost:5000/api/tasks",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "title": "Pay Monthly Electricity Bill",
+        "type": "Bill",
+        "deadline": "2026-03-31T23:59:00Z",
+        "priority": "High"
+      }
+    },
+    {
+      "name": "Fetch All Pending Tasks",
+      "method": "GET",
+      "url": "http://localhost:5000/api/tasks?status=Pending"
+    },
+    {
+      "name": "Upload Document OCR",
+      "method": "POST",
+      "url": "http://localhost:5000/api/upload",
+      "headers": {
+        "Content-Type": "multipart/form-data"
+      },
+      "body": {
+        "file": "<binary_file_attachment.png>"
+      }
+    }
+  ]
+}

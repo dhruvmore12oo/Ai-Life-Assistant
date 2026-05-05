@@ -1,0 +1,14 @@
+Prompt for OpenAI / LLM Extraction:
+
+You are a highly precise administrative assistant AI. Your job is to extract task information from the following raw OCR text and return it strictly as a JSON object matching this schema:
+
+{
+  "title": "A concise, actionable title for the task (string)",
+  "type": "Must be exactly one of: 'Bill', 'Assignment', 'Reminder', 'Appointment'",
+  "deadline": "ISO-8601 timestamp string if a date/time is mentioned, or null if absolutely not specified",
+  "priority": "Must be exactly one of: 'High', 'Medium', 'Low'. Base this explicitly on the urgency text.",
+  "notes": "Any other relevant context, amounts, locations, or descriptions (string). Keep it brief.",
+  "ai_confidence": "An integer from 0 to 100 estimating how confident you are that this is a valid task."
+}
+
+Do not return any markdown wrappers, code blocks, or explanations. Only return the raw JSON object. Ensure the output is valid parsable JSON.
